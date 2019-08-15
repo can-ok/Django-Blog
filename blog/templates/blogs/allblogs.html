@@ -1,14 +1,12 @@
 <html lang="en">
-
   <head>
-
-  {% load staticfiles %}
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>CAN OKAN TAŞKIRAN</title>
+    <title>Album example · Bootstrap</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -38,57 +36,43 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'myhome' %">CAN OKAN TAŞKIRAN</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link active" href="#">Home </a>
-                <a class="nav-item nav-link" href="http://twitter.com">Twitter</a>
-                <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-                <a class="nav-item nav-link " href="{% url 'allblogs' %}" tabindex="-1" aria-disabled="true">Blog</a>
-              </div>
-            </div>
-          </nav>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="{% url 'myhome' %">CAN OKAN TAŞKIRAN</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link " href="#">Home </a>
+                    <a class="nav-item nav-link" href="http://twitter.com">Twitter</a>
+                    <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
+                    <a class="nav-item nav-link " href="{% url 'allblogs' %}" tabindex="-1" aria-disabled="true">Blog</a>
+                  </div>
+                </div>
+              </nav>
+    </header>
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi,I'am Can Okan</h1>
-      <p class="lead text-muted">Hey there,Your welcome</p>
-      <p>
-        <a href="mailto:canokan21997@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-      </p>
-      <img src="{% static 'fotom.png' %}" height="200" width="200">
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
     <div class="container">
 
-      <div class="row">
+    
 
-        {%for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{job.image.url}}">
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-              
-            </div>
-          </div>
-        </div>
-       
+  <h1 class="pt-3">Welcome to my blog</h1>
+  <br>
+  <h2>Latest Post</h2>
+<hr>
+        {% for blog in blogs.all %}
+        <a href="{% url 'detail' blog.id %}"><h1>{{blog.title}}</h1></a>
+        <br>
+        {{blog.pub_date_pretty}}
+        <br>
+        <img src="{{blog.image.url}}" alt="..." class="img-thumbnail" height="200" width="200">
+        <p>{{ blog.summary }}</p>
         {% endfor %}
-      </div>
-    </div>
-  </div>
-
+  <hr>
+</div>
 </main>
 
 <footer class="text-muted">
